@@ -16,11 +16,6 @@ public class ApplyRules {
 
 
 	public boolean runRules(){
-		boolean rule = false;
-		for (VisitorRule visitorRule: visitorRuleList) {
-			rule = visitorRule.accept();
-		}
-
-		return rule;
+		return visitorRuleList.parallelStream().allMatch(VisitorRule::accept);
 	}
 }
